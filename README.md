@@ -21,10 +21,12 @@ Based on [IntelSDM Squad Dma Cheat](https://github.com/IntelSDM/SquadDMA) and Ne
   * folders hierarchy
   * names dont work
   * bad bone loop
-  * all gmod proccesess loop, because have some problem with pid
+  * all gmod proccesess loop, because i have some problem with pid
+
+[actual offsets you can find here](https://github.com/Calvineries/Gmod-Nexus-External-ESP)
 
 ## Credits
-* [IntelSDM](https://github.com/IntelSDM))
+* [IntelSDM](https://github.com/IntelSDM)
 * [PCILeech](https://github.com/ufrisk/pcileech)
 * [MemProcFS](https://github.com/ufrisk/MemProcFS)
 * [DMALibrary](https://github.com/Metick/DMALibrary/tree/Master)
