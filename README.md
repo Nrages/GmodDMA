@@ -10,14 +10,14 @@ DMA ESP Aimbot / Esp for Garry's Mod (x64) based on IntelSDM Squad cheat
 ## Desc
 Based on [IntelSDM Squad Dma Cheat](https://github.com/IntelSDM/SquadDMA) and Nexus External ESP.
 
-*what i add
+* what i add
   * Rewrite w2s
   * Bone esp (work only on dormant players)
   * Add aimbot (target = closest to crosshair)
   * Add retry when localplayer is null
   * More beautiful esp
 
-*what is bad
+* what is bad
   * folders hierarchy
   * names dont work
   * bad bone loop
