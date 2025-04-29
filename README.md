@@ -10,7 +10,7 @@ DMA ESP Aimbot / Esp for Garry's Mod based on IntelSDM Squad cheat
 ## Desc
 Based on [IntelSDM Squad Dma Cheat](https://github.com/IntelSDM/SquadDMA).
 
-Input manager (IntelSDM)
+Input manager (IntelSDM)\n
 Rewrite w2s
 Add aimbot (target = closest to crosshair)
 Add retry when localplayer is null
