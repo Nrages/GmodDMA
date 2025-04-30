@@ -12,22 +12,22 @@ Based on [IntelSDM Squad Dma Cheat](https://github.com/IntelSDM/SquadDMA) and [N
 
 ## Features
 Player ESP
-    Name
-    Text Color
-    Distance
-    Health
-    Max Distance
-    Text Size
-        Bone esp (without checkbox, hide when target is dormant)
+   * Name
+   * Text Color
+   * Distance
+   * Health
+   * Max Distance
+   * Text Size
+   * Bone esp (without checkbox, hide when target is dormant)
 
 Aimbot
-    Enable
-    Draw Fov
-    Fov
-    Key (default [F])
+   * Enable
+   * Draw Fov
+   * Fov
+   * Key (default [F])
 
 Overlay
-    Override W2S Resolution (custom resolution)
+   * Override W2S Resolution (custom resolution)
 
 ## Main changes and problems
 * what i add
