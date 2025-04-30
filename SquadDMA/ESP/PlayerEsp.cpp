@@ -23,6 +23,14 @@ void DrawPlayerEsp()
 		if (entity->GetPosition() == Vector3(0, 0, 0))
 			continue;
 
+		float distance = (Vector3::Distance(EngineInstance->LocalPlayerPos, entity->GetPosition())/32.0f);
+
+		if (distance < 0)
+			continue;
+
+		if (distance > Configs.Player.MaxDistance)
+			continue;
+
 		ViewMatrixStruct matrix = EngineInstance->GetViewMatrix();
 
 		Vector2 screenpos = Camera::WorldToScreen(matrix, entity->GetPosition());
@@ -102,22 +110,15 @@ void DrawPlayerEsp()
 			}*/
 		}
 
-		//Vector3 campos = Vector3(matrix._4, matrix._8, matrix._12);
-		//float distance = (Vector3::Distance(campos, entity->GetPosition()));
-
-		//if (distance < 0)
-		//	continue;
-
-		//std::wstring wdistance = Configs.Player.Distance ? L"[" + std::to_wstring((int)distance) + L"m]" : L"";
+		std::wstring wdistance = Configs.Player.Distance ? L"[" + std::to_wstring((int)distance) + L"m]" : L"";
 		std::wstring whealth = Configs.Player.Health ? L" [" + std::to_wstring((int)entity->GetHealth()) + L"]" : L"";
 		//std::wstring wstamina = Configs.Player.Health ? L"[" + std::to_wstring((int)entity->GetStamina()) + L"]" : L"";
 		std::wstring name = Configs.Player.Name ? entity->GetName() : L"";
-		//if (distance > Configs.Player.MaxDistance)
-		//	continue;
 		int y_off = 14;
 
 		//DrawText(screenpos.x, screenpos.y, name + wdistance, LIT("Verdana"), Configs.Player.FontSize, Configs.Player.TextColour, CentreCentre);
 		DrawText(screenpos.x, screenpos.y + 4, name + whealth, LIT("Verdana"), Configs.Player.FontSize, Colour(255 - (health_int*2.55), health_int*2.55, 0, 255), CentreCentre);
+		DrawText(screenpos.x, screenpos.y + 4 + y_off, wdistance, LIT("Verdana"), Configs.Player.FontSize, Configs.Player.TextColour, CentreCentre);
 
 		//DrawText(screenpos.x, screenpos.y+y_off, wstamina, LIT("Verdana"), Configs.Player.FontSize, Configs.Player.TextColour, CentreCentre);
 	}

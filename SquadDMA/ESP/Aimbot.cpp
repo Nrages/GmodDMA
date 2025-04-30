@@ -69,9 +69,9 @@ void GetBestTarget()
 		if (entity->GetHealth() <= 0)
 			continue;
  
-		Vector2 Center = Vector2(1920/2, 1080/2);
+		Vector2 cos = Vector2(Configs.Overlay.OverrideResolution ? Configs.Overlay.Width / 2 : GetSystemMetrics(SM_CXSCREEN) / 2, Configs.Overlay.OverrideResolution ? Configs.Overlay.Height / 2 : GetSystemMetrics(SM_CYSCREEN) / 2);
  
-		float delta = Vector2::Distance(Head, Center);
+		float delta = Vector2::Distance(Head, cos);
  
 		if (delta > Configs.Aimbot.Fov)
 			continue;
@@ -126,6 +126,7 @@ std::shared_ptr<CheatFunction> ApplyAimbot = std::make_shared<CheatFunction>(10,
  
 void DrawFov()
 {
+	Vector2 cos = Vector2(Configs.Overlay.OverrideResolution ? Configs.Overlay.Width / 2 : GetSystemMetrics(SM_CXSCREEN) / 2, Configs.Overlay.OverrideResolution ? Configs.Overlay.Height / 2 : GetSystemMetrics(SM_CYSCREEN) / 2);
 	if (Configs.Aimbot.DrawFov)
-		OutlineCircle(1920/2, 1080/2, Configs.Aimbot.Fov, 2, Colour(255,255,255));
+		OutlineCircle(cos.x, cos.y, Configs.Aimbot.Fov, 2, Colour(255,255,255));
 }
