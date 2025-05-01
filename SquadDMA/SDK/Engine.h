@@ -5,8 +5,8 @@
 class Engine
 {
 private:
-	uint64_t LocalPlayerOffset = 0x943190;
-	uint64_t EntityList = 0x965378;
+	uint64_t LocalPlayerOffset = 0x9432a0;
+	uint64_t EntityList = 0x965488;
 
 	//uint64_t ViewMatrixOffset = 0x4A3AD8;
 	uint64_t ViewMatrixOffset = 0x7be5e8;
