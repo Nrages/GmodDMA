@@ -99,7 +99,12 @@ void Engine::RefreshViewMatrix(VMMDLL_SCATTER_HANDLE handle)
 
 void Engine::UpdateLocalPlayerPos(VMMDLL_SCATTER_HANDLE handle)
 {
-	TargetProcess.AddScatterReadRequest(handle, LocalPlayer + m_vecOrigin, reinterpret_cast<void*>(&LocalPlayerPos),sizeof(Vector3));
+	TargetProcess.AddScatterReadRequest(handle, engine_dll + LocalPlayerPosOffset, reinterpret_cast<void*>(&LocalPlayerPos),sizeof(Vector3));
+}
+
+void Engine::UpdatePunchAngle(VMMDLL_SCATTER_HANDLE handle)
+{
+	TargetProcess.AddScatterReadRequest(handle, LocalPlayer + 0x29B0 + 0x34 + 0x3C, reinterpret_cast<void*>(&PunchAngle),sizeof(Vector3));
 }
 
 ViewMatrixStruct Engine::GetViewMatrix()

@@ -9,8 +9,7 @@
 #include "Drawing.h"
 
 std::shared_ptr<ActorEntity> AimbotTarget;
-uint64_t Rotation = 0x65424C;
-uint64_t LocalPlayerP_offset = 0x8914D8;
+uint64_t Rotation = 0x65528C;
  
 float AngleNormalize(float angle)
 {
@@ -69,9 +68,9 @@ void GetBestTarget()
 		if (entity->GetHealth() <= 0)
 			continue;
  
-		Vector2 cos = Vector2(Configs.Overlay.OverrideResolution ? Configs.Overlay.Width / 2 : GetSystemMetrics(SM_CXSCREEN) / 2, Configs.Overlay.OverrideResolution ? Configs.Overlay.Height / 2 : GetSystemMetrics(SM_CYSCREEN) / 2);
+		Vector2 Center = Vector2(1920/2, 1080/2);
  
-		float delta = Vector2::Distance(Head, cos);
+		float delta = Vector2::Distance(Head, Center);
  
 		if (delta > Configs.Aimbot.Fov)
 			continue;
@@ -106,13 +105,18 @@ void Aimbot()
 		return;
 
 	ViewMatrixStruct matrix = EngineInstance->GetViewMatrix();
-
 	Vector3 Head3D = Vector3(AimbotTarget->GetBones().Head1._4, AimbotTarget->GetBones().Head1._8, AimbotTarget->GetBones().Head1._12);
-	Vector3 campos = TargetProcess.Read<Vector3>(engine_dll + LocalPlayerP_offset);
-	std::cout << campos.x << "/" << campos.y << "\n";
+	Vector3 punch = EngineInstance->PunchAngle;
+	punch.z = 0;
+
+	Vector3 campos = EngineInstance->LocalPlayerPos;
+	//std::cout << campos.x << "/" << campos.y << "\n";
 	auto direction = Head3D - campos;
-	auto angles = direction;
 	Vector3 ang = Vector3::ToAngles(direction);
+
+	if (Configs.Aimbot.NoRecoil == true)
+		ang = ang - punch;
+	
 	AnglesNormalize(ang);
  
 	//std::cout << ang.x << "/" << ang.y << "\n";
@@ -126,7 +130,6 @@ std::shared_ptr<CheatFunction> ApplyAimbot = std::make_shared<CheatFunction>(10,
  
 void DrawFov()
 {
-	Vector2 cos = Vector2(Configs.Overlay.OverrideResolution ? Configs.Overlay.Width / 2 : GetSystemMetrics(SM_CXSCREEN) / 2, Configs.Overlay.OverrideResolution ? Configs.Overlay.Height / 2 : GetSystemMetrics(SM_CYSCREEN) / 2);
 	if (Configs.Aimbot.DrawFov)
-		OutlineCircle(cos.x, cos.y, Configs.Aimbot.Fov, 2, Colour(255,255,255));
+		OutlineCircle(1920/2, 1080/2, Configs.Aimbot.Fov, 2, Colour(255,255,255));
 }

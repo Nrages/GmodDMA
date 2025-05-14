@@ -56,9 +56,12 @@ void CreateGUI()
 			aimbottab->Push(enable);
 			auto drawfov = std::make_shared<Toggle>(100, 25, LIT(L"Draw Fov"), &Configs.Aimbot.DrawFov);
 			aimbottab->Push(drawfov);
-			auto fov = std::make_shared<Slider<int>>(100, 50, 150, LIT(L"Fov"), LIT(L"m"), 1, 180, &Configs.Aimbot.Fov);
+			auto norecoil = std::make_shared<Toggle>(100, 45, LIT(L"No Recoil"), &Configs.Aimbot.NoRecoil);
+			aimbottab->Push(norecoil);
+
+			auto fov = std::make_shared<Slider<int>>(100, 70, 150, LIT(L"Fov"), LIT(L"m"), 1, 180, &Configs.Aimbot.Fov);
 			aimbottab->Push(fov);
-			auto key = std::make_shared<KeyBind>(100, 100, LIT(L"Key"), &Configs.Aimbot.Key);
+			auto key = std::make_shared<KeyBind>(100, 120, LIT(L"Key"), &Configs.Aimbot.Key);
 			aimbottab->Push(key);
 		}
 		tabcontroller->Push(aimbottab);

@@ -90,6 +90,7 @@ void RenderFrame()
 	auto handle = TargetProcess.CreateScatterHandle();
 	EngineInstance->RefreshViewMatrix(handle);
 	EngineInstance->UpdateLocalPlayerPos(handle);
+	EngineInstance->UpdatePunchAngle(handle);
 	TargetProcess.ExecuteReadScatter(handle);
 	TargetProcess.CloseScatterHandle(handle);
 	UpdatePlayers->Execute();

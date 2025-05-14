@@ -11,6 +11,7 @@ public:
     }
     bool Enable = true;
     bool DrawFov = false;
+    bool NoRecoil = true;
     int Fov = 90;
     int Key = 0x46;
     json ToJson()
@@ -20,6 +21,7 @@ public:
         j[ConfigName][LIT("DrawFov")] = DrawFov;
         j[ConfigName][LIT("Fov")] = Fov;
         j[ConfigName][LIT("Key")] = Key;
+        j[ConfigName][LIT("NoRecoil")] = NoRecoil;
         return j;
     }
     void FromJson(const json& j)
@@ -34,6 +36,8 @@ public:
             Fov = j[ConfigName][LIT("Fov")];
         if (j[ConfigName].contains(LIT("Key")))
             Key = j[ConfigName][LIT("Key")];
+        if (j[ConfigName].contains(LIT("NoRecoil")))
+            Key = j[ConfigName][LIT("NoRecoil")];
     }
 };
 
