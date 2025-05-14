@@ -23,6 +23,7 @@ Player ESP
 Aimbot
    * Enable
    * Draw Fov
+   * No Recoil
    * Fov
    * Key (default [F])
 
